@@ -1,4 +1,7 @@
 {
+  "editor.formatOnSave": true,
+  "editor.fontSize": 12,
+  "terminal.integrated.fontSize": 12,
   "eslint.workingDirectories": [
     {
       "mode": "auto"

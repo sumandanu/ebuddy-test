@@ -3,6 +3,8 @@ import express, { type Express } from "express";
 import morgan from "morgan";
 import cors from "cors";
 
+import apiV1 from "../routes/v1";
+
 export const createServer = (): Express => {
   const app = express();
   app
@@ -11,6 +13,7 @@ export const createServer = (): Express => {
     .use(urlencoded({ extended: true }))
     .use(json())
     .use(cors())
+    .use("/v1", apiV1)
     .get("/message/:name", (req, res) => {
       return res.json({ message: `hello ${req.params.name}` });
     })

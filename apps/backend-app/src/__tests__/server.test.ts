@@ -20,4 +20,13 @@ describe("Server", () => {
         expect(res.body).toEqual({ message: "hello jared" });
       });
   });
+
+  it("users check returns 200", async () => {
+    await supertest(createServer())
+      .get("/v1/users")
+      .expect(200)
+      .then((res) => {
+        expect(res.ok).toBe(true);
+      });
+  });
 });
