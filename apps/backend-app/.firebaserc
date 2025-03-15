@@ -1,0 +1,8 @@
+{
+  "projects": {
+    "default": "ebuddy-test-5d286",
+    "dev-test": "ebuddy-test-5d286"
+  },
+  "targets": {},
+  "etags": {}
+}
