@@ -1,4 +1,4 @@
-# Turborepo kitchen sink starter
+# Buddy Test
 
 This Turborepo starter is maintained by the Turborepo core team.
 
@@ -9,8 +9,59 @@ This example also shows how to use [Workspace Configurations](https://turbo.buil
 Run the following command:
 
 ```sh
-npx create-turbo@latest -e kitchen-sink
+pnpm install
 ```
+
+### Prerequisites
+
+This is an example of how to list things you need to use the software and how to install them.
+
+- firebase-tools
+  ```sh
+  npm install firebase-tools -g
+  ```
+
+### Installation
+
+1. Get a firebase API Key at [https://firebase.google.com/](https://firebase.google.com/)
+2. Clone the repo
+   ```sh
+   git clone https://github.com/sumandanu/ebuddy-test.git
+   ```
+3. Install PNPM packages
+   ```sh
+   pnpm install
+   ```
+4. Download ServiceAccountKey firebase and save in folder
+   ```js
+   apps / backend - app / path / to;
+   ```
+5. Rename your .env
+   ```js
+   apps/backend-app/env-example to apps/backend-app/.env
+   ```
+   ```js
+   apps/frontend-app/env-example to apps/frontend-app/.env
+   ```
+6. Enter your API FIREBASE in `apps/backend-app/.env`
+   ```js
+   FIREBASE_API_KEY = your - api - key;
+   FIREBASE_AUTH_DOMAIN = your - auth - domain;
+   FIREBASE_PROJECT_ID = your - project - id;
+   FIREBASE_STORAGE_BUCKET = your - storage - bucket;
+   FIREBASE_MESSAGING_SENDER_ID = your - messaging - sender - id;
+   FIREBASE_APP_ID = your - app - id;
+   ```
+7. Enter your API FIREBASE in `apps/frontend-app/.env`
+   ```js
+   NEXT_PUBLIC_BACKEND_API_URL=http://127.0.0.1:5001/{project_id}/{region_id}
+   ```
+8. Run project
+   ```sh
+   pnpm dev
+   ```
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## What's inside?
 
