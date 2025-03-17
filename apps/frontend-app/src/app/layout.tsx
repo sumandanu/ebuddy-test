@@ -1,13 +1,10 @@
 "use client";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
 import InitColorSchemeScript from "@mui/material/InitColorSchemeScript";
-import "@fontsource/roboto/300.css";
-import "@fontsource/roboto/400.css";
-import "@fontsource/roboto/500.css";
-import "@fontsource/roboto/700.css";
 import AppThemeProvider from "../context/AppThemeContext";
-import { MainNavbar } from "../components";
 import "./styles.css";
+import StoreProvider from "./StoreProvider";
+import AuthSessionProvider from "../components/SessionProvider";
 
 export default function RootLayout({
   children,
@@ -16,15 +13,18 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body>
-        <AppRouterCacheProvider options={{ enableCssLayer: false }}>
-          <AppThemeProvider>
-            <InitColorSchemeScript attribute="class" />
-            <MainNavbar />
-            {children}
-          </AppThemeProvider>
-        </AppRouterCacheProvider>
-      </body>
+      <StoreProvider>
+        <body>
+          <AuthSessionProvider>
+            <AppRouterCacheProvider options={{ enableCssLayer: false }}>
+              <AppThemeProvider>
+                <InitColorSchemeScript attribute="class" />
+                {children}
+              </AppThemeProvider>
+            </AppRouterCacheProvider>
+          </AuthSessionProvider>
+        </body>
+      </StoreProvider>
     </html>
   );
 }

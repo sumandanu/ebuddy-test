@@ -1,0 +1,4 @@
+NEXTAUTH_URL=http://localhost:3002
+NEXTAUTH_SECRET=your-secret-key
+
+NEXT_PUBLIC_BACKEND_API_URL=http://127.0.0.1:5001/{project_id}/{region_id}

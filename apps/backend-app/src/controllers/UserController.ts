@@ -12,7 +12,10 @@ export class UserController {
         .json({ message: "Email and password are required" });
     }
     try {
-      const registerUser: any = await UserService.registerUser(email, password);
+      const registerUser: unknown = await UserService.registerUser(
+        email,
+        password
+      );
       res.status(201).json({
         message: "User registered successfully",
         user: registerUser,
