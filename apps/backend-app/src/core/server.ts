@@ -12,14 +12,13 @@ export const createServer = (): Express => {
     .use(morgan("dev"))
     .use(urlencoded({ extended: true }))
     .use(json())
-    .use(cors())
-    .use("/v1", apiV1)
-    .get("/message/:name", (req, res) => {
-      return res.json({ message: `hello ${req.params.name}` });
-    })
-    .get("/status", (_, res) => {
-      return res.json({ ok: true });
-    });
-
+    .use(
+      cors({
+        origin: ["http://127.0.0.1:5001", "http://localhost:3002"], // Domain frontend
+        methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+        credentials: true, // Mengizinkan cookies dikirim
+      })
+    )
+    .use("/v1", apiV1);
   return app;
 };

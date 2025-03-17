@@ -1,9 +1,6 @@
-import { log } from "@repo/logger";
+import { onRequest } from "firebase-functions/v2/https";
 import { createServer } from "./server";
 
-const port = process.env.PORT || 5001;
-const server = createServer();
+const app = createServer();
 
-server.listen(port, () => {
-  log(`api running on ${port}`);
-});
+export const api = onRequest({ cors: true }, app);
