@@ -2,22 +2,13 @@
 import React, { useEffect, useState } from "react";
 import AdminLayout from "../../components/organisms/AdminLayout";
 import PageContainer from "../../components/organisms/container/PageContainer";
-import {
-  Backdrop,
-  Box,
-  Card,
-  CircularProgress,
-  Grid2,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Box, Card, Grid2, TextField, Typography } from "@mui/material";
 import { useSession } from "next-auth/react";
 
 const ProfilePage = () => {
   const { data: session }: any = useSession();
 
   const [data, setData]: any = useState(null);
-  const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
     async function fetchPosts() {
@@ -35,7 +26,6 @@ const ProfilePage = () => {
           .then((res) => res.json())
           .then((data) => {
             setData(data[0]);
-            setLoading(false);
           })
           .catch((error) => {
             console.log({ error });
@@ -43,17 +33,6 @@ const ProfilePage = () => {
     }
     fetchPosts();
   }, [session]);
-
-  if (isLoading) {
-    return (
-      <Backdrop
-        sx={(theme) => ({ color: "#fff", zIndex: theme.zIndex.drawer + 1 })}
-        open={status === "loading"}
-      >
-        <CircularProgress color="inherit" />
-      </Backdrop>
-    );
-  }
 
   return (
     <AdminLayout>
@@ -67,10 +46,10 @@ const ProfilePage = () => {
               <Grid2 spacing={2} padding={2}>
                 <TextField
                   id="name"
-                  label="Email"
+                  placeholder="Email"
                   name="email"
                   variant="outlined"
-                  value={data.email}
+                  defaultValue={data?.email}
                   fullWidth
                   sx={{
                     mb: 2,

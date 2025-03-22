@@ -3,13 +3,7 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import Sidebar from "./sidebar/Sidebar";
-import {
-  Backdrop,
-  Box,
-  CircularProgress,
-  Container,
-  styled,
-} from "@mui/material";
+import { Box, Container, styled } from "@mui/material";
 import Header from "../organisms/header/Header";
 
 interface Props {
@@ -41,17 +35,6 @@ export default function AdminLayout({ children }: Props) {
       router.push("/auth/signin");
     }
   }, [status, router]);
-
-  if (status === "loading") {
-    return (
-      <Backdrop
-        sx={(theme) => ({ color: "#fff", zIndex: theme.zIndex.drawer + 1 })}
-        open={status === "loading"}
-      >
-        <CircularProgress color="inherit" />
-      </Backdrop>
-    );
-  }
 
   if (!session) {
     return null;
